@@ -13,7 +13,7 @@ const Tasks: React.FC = () => {
     setLoading(true)
     try {
       const data = await getTasks()
-      setTasks(data || [])
+      setTasks((data as any[]) || [])
     } catch (error) {
       console.error('Failed to load tasks:', error)
     } finally {
@@ -142,8 +142,8 @@ const Tasks: React.FC = () => {
               <Select.Option value="interval">间隔执行</Select.Option>
             </Select>
           </Form.Item>
-          <Form.Item name="cron_expression" label="Cron表达式" placeholder="0 * * * *">
-            <Input />
+          <Form.Item name="cron_expression" label="Cron表达式">
+            <Input placeholder="0 * * * *" />
           </Form.Item>
           <Form.Item name="timeout" label="超时时间(秒)" initialValue={300}>
             <Input type="number" />

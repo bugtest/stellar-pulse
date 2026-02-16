@@ -20,9 +20,9 @@ const Dashboard: React.FC = () => {
         getDeployments()
       ])
       setOverview(overviewData)
-      setNodes(nodesData || [])
-      setPods(podsData || [])
-      setDeployments(deploymentsData || [])
+      setNodes((nodesData as any[]) || [])
+      setPods((podsData as any[]) || [])
+      setDeployments((deploymentsData as any[]) || [])
     } catch (error) {
       console.error('Failed to load data:', error)
     } finally {

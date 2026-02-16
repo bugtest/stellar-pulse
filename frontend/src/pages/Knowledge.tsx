@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Card, Table, Button, Modal, Form, Input, Select, Space, Tag, message } from 'antd'
+import { Card, Table, Button, Modal, Form, Input, Space, Tag, message } from 'antd'
 import { PlusOutlined, ReloadOutlined } from '@ant-design/icons'
 import { getArticles, getCases, createArticle, createCase, getCategories } from '../api'
 
@@ -22,9 +22,9 @@ const Knowledge: React.FC = () => {
         getCases(),
         getCategories()
       ])
-      setArticles(articlesData || [])
-      setCases(casesData || [])
-      setCategories(categoriesData || [])
+      setArticles((articlesData as any) || [])
+      setCases((casesData as any) || [])
+      setCategories((categoriesData as any) || [])
     } catch (error) {
       console.error('Failed to load knowledge:', error)
     } finally {

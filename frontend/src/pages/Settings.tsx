@@ -1,7 +1,7 @@
-import { Card, Form, Input, Button, Switch, message, Divider } from 'antd'
+import { Card, Form, Input, Button, Switch, message } from 'antd'
 
 const Settings: React.FC = () => {
-  const [form] = Form.useForm()
+  // const [form] = Form.useForm()
 
   const handleSave = () => {
     message.success('设置已保存')

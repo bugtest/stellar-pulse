@@ -43,7 +43,7 @@ const Chat: React.FC = () => {
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: response.message || response,
+        content: (response as any).message || JSON.stringify(response),
         timestamp: new Date()
       }
       setMessages(prev => [...prev, assistantMessage])
@@ -73,7 +73,7 @@ const Chat: React.FC = () => {
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `诊断结果:\n\n${response.diagnosis}\n\n根因: ${response.root_cause || '未知'}\n\n建议:\n${response.suggestions?.map((s: string, i: number) => `${i + 1}. ${s}`).join('\n') || '无'}`,
+        content: `诊断结果:\n\n${(response as any).diagnosis}\n\n根因: ${(response as any).root_cause || '未知'}\n\n建议:\n${((response as any).suggestions as string[])?.map((s: string, i: number) => `${i + 1}. ${s}`).join('\n') || '无'}`,
         timestamp: new Date()
       }
       setMessages(prev => [...prev, assistantMessage])

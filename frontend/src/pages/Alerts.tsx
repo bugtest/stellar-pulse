@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Card, Table, Tag, Button, Modal, Form, Input, Select, Switch, Space, message } from 'antd'
-import { PlusOutlined, CheckOutlined, ReloadOutlined } from '@ant-design/icons'
+import { PlusOutlined, ReloadOutlined } from '@ant-design/icons'
 import { getAlerts, getAlertRules, createAlertRule, deleteAlertRule, acknowledgeAlert } from '../api'
 
 const Alerts: React.FC = () => {
@@ -17,8 +17,8 @@ const Alerts: React.FC = () => {
         getAlerts(),
         getAlertRules()
       ])
-      setAlerts(alertsData || [])
-      setRules(rulesData || [])
+      setAlerts(alertsData.data || [])
+      setRules(rulesData.data || [])
     } catch (error) {
       console.error('Failed to load alerts:', error)
     } finally {
